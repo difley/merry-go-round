@@ -3,18 +3,18 @@ mark_start_radius = 0.8
 mark_end_radius = 1.0
 mark_division = 10.
 
-hand_angle(time, max_hand_value) = -pi*time/max_value + pi
+hand_angle(time, max_hand_value) = -pi*time/max_hand_value + pi
 hand_angle_value = hand_angle(value, max_value)
 
-set term png
-set output "dial.png"
+set term svg dynamic enhanced butt linewidth 1
+set output "dial.svg"
 set multiplot
 unset key
 unset border
 unset ytics
 unset xtics
 set xrange [-1:1]
-set yrange [0:1]
+set yrange [-1:1]
 set size ratio -1
 unset rtics
 unset raxis
@@ -33,7 +33,8 @@ plot [3./4.*pi:pi] '+' using 1:(r1):(r2) with filledcurves fillcolor rgb 'red'
 unset polar
 
 do for [t=0:int(max_value):int(max_value/mark_division)] {
-    set arrow from cos(hand_angle(t, mark_division))*mark_start_radius, sin(hand_angle(t, mark_division))*mark_start_radius to cos(hand_angle(t, mark_division))*mark_end_radius, sin(hand_angle(t, mark_division))*mark_end_radius nohead lw 6 lc rgb 'black'
+    mark_angle = hand_angle(t, max_value)
+    set arrow from cos(mark_angle)*mark_start_radius, sin(mark_angle)*mark_start_radius to cos(mark_angle)*mark_end_radius, sin(mark_angle)*mark_end_radius nohead lw 6 lc rgb 'black'
 }
 
 set arrow from 0,0 to cos(hand_angle_value)*hand_length,sin(hand_angle_value)*hand_length nohead lw 7 lc rgb 'blue'
