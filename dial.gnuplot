@@ -14,7 +14,7 @@ unset border
 unset ytics
 unset xtics
 set xrange [-1:1]
-set yrange [-1:1]
+set yrange [0:1]
 set size ratio -1
 unset rtics
 unset raxis
