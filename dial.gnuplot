@@ -32,7 +32,7 @@ plot [3./4.*pi:pi] '+' using 1:(r1):(r2) with filledcurves fillcolor rgb 'red'
 
 unset polar
 
-do for [t=0:int(max_value):int(mark_division)] {
+do for [t=0:int(max_value):int(max_value/mark_division)] {
     set arrow from cos(hand_angle(t, mark_division))*mark_start_radius, sin(hand_angle(t, mark_division))*mark_start_radius to cos(hand_angle(t, mark_division))*mark_end_radius, sin(hand_angle(t, mark_division))*mark_end_radius nohead lw 6 lc rgb 'black'
 }
 
