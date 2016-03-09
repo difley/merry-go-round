@@ -20,7 +20,7 @@ hand_length = 0.7
 innerradius = 0.4
 outerradius = 1.0
 mark_start_radius = 0.8
-mark_end_radius = 0.98
+mark_end_radius = 1.0
 mark_division = 10.
 
 hand_angle(time, max_hand_value) = -pi*time/max_hand_value + pi
